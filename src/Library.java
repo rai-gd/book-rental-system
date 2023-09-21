@@ -25,4 +25,20 @@ class Library {
         return availableBooks;
     }
 
+    public boolean isBookBorrowed(Book book) {
+        for (Member member : members) {
+            if (member.getBorrowedBooks().contains(book)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void displayAvailableBooks() {
+        System.out.println("Available Books:");
+        for (Book book : getAvailableBooks()) {
+            System.out.println(book);
+        }
+    }
+
 }
