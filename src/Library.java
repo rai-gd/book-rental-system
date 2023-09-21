@@ -15,4 +15,14 @@ class Library {
         members.add(member);
     }
 
+    public List<Book> getAvailableBooks() {
+        List<Book> availableBooks = new ArrayList<>();
+        for (Book book : books) {
+            if (!isBookBorrowed(book)) {
+                availableBooks.add(book);
+            }
+        }
+        return availableBooks;
+    }
+
 }
