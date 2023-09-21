@@ -25,6 +25,7 @@ class Library {
         return availableBooks;
     }
 
+<<<<<<< HEAD
     public boolean isBookBorrowed(Book book) {
         for (Member member : members) {
             if (member.getBorrowedBooks().contains(book)) {
@@ -41,4 +42,6 @@ class Library {
         }
     }
 
+=======
+>>>>>>> 53538ae (Added code which returns list of available Book objects.)
 }
