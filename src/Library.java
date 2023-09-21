@@ -7,4 +7,12 @@ class Library {
         this.members = new ArrayList<>();
     }
 
+     public void addBook(Book book) {
+        books.add(book);
+    }
+
+    public void addMember(Member member) {
+        members.add(member);
+    }
+
 }
