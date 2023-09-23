@@ -8,6 +8,7 @@ import java.util.List;
 */
 class Book {
 	private int id;
+	private boolean isAvailable;
     private String title;
 	private String author;
 
@@ -19,8 +20,9 @@ class Book {
     * @param title  The title of the book.
     * @param author The author of the book.
     */
-	public Book(int id, String title, String author) {
+	public Book(int id, boolean isAvailable, String title, String author) {
 		this.id = id;
+		this.isAvailable = isAvailable;
 	    this.title = title;
 		this.author = author;
 	}
@@ -33,6 +35,13 @@ class Book {
 	public int getId() {
 	    return id;
 	}
+
+	/**
+	 * Determines the status of the the book if available or not.
+	 *
+	 * @return A boolean value representing the availablity of the book.
+	 */
+	public boolean isAvailable { return isAvailable; }
 
 	/**
     * Gets the title of the book.
