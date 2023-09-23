@@ -12,7 +12,7 @@ public class LibrarySystem {
     public static ArrayList<Book> BookList(){
         ArrayList<Book> books = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("Resources/Books.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Resource/Books.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split(",");
@@ -32,6 +32,7 @@ public class LibrarySystem {
         return books;
     }
     public static void main(String[] args) {
+        ArrayList<Book> bookList = BookList();
         String divider = "--------------------------";
 
         // Create a library
@@ -78,13 +79,21 @@ public class LibrarySystem {
             switch (choice) {
                 case 1: // View books
                     while (true) {
-                        // Print book list
-                        System.out.println(divider);
-                        System.out.printf("%5s%5s%15s%n", " ", "Title", "Author");// pwede wala format
-                        System.out.println("1 title author");// replace
+                        System.out.println("====================Books====================");
+                        System.out.printf("%-4s%-23s%-40s%-20s%n", "ID", "Status", "Title", "Author");
+                        for (Book book : bookList) {
+                            String availability = book.getIsAvailable() ? "Available" : "Not Available";
+
+                            String idFormatted = String.format("%-4d", book.getId());
+                            String availabilityFormatted = String.format("%-23s", availability);
+                            String titleFormatted = String.format("%-40s", book.getTitle());
+                            String authorFormatted = String.format("%-20s", book.getAuthor());
+
+                            System.out.println(idFormatted + availabilityFormatted + titleFormatted + authorFormatted);
+                        }
+                        System.out.println("=============================================");
 
                         // Print menu
-                        System.out.println(divider);
                         System.out.print("[1] Select book\n" +
                                 "[2] Search Book\n" +
                                 "[3] Add book\n" +
