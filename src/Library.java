@@ -20,7 +20,9 @@ class Library {
         members.add(member2);
         members.add(member3);
     }
-
+    public List<Member> getMembers() {
+        return members;
+    }
     public void addMember(Member member) {
         members.add(member);
     }
