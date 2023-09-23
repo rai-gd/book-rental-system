@@ -8,14 +8,27 @@ class Library {
     public Library() {
         this.books = new ArrayList<>();
         this.members = new ArrayList<>();
+        initializeMembers(); // Initialize the member list
     }
 
-     public void addBook(Book book) {
-        books.add(book);
-    }
+    private void initializeMembers() {
+        Member member1 = new Member(101, "Alice");
+        Member member2 = new Member(102, "Bob");
+        Member member3 = new Member(103, "MinMin");
 
+        members.add(member1);
+        members.add(member2);
+        members.add(member3);
+    }
+    public List<Member> getMembers() {
+        return members;
+    }
     public void addMember(Member member) {
         members.add(member);
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
     }
 
     public List<Book> getAvailableBooks() {
@@ -28,7 +41,7 @@ class Library {
         return availableBooks;
     }
 
-<<<<<<< HEAD
+
     public boolean isBookBorrowed(Book book) {
         for (Member member : members) {
             if (member.getBorrowedBooks().contains(book)) {
@@ -38,13 +51,21 @@ class Library {
         return false;
     }
 
-    public void displayAvailableBooks() {
-        System.out.println("Available Books:");
-        for (Book book : getAvailableBooks()) {
+
+    public void viewBorrowedBooks(Member member) {
+        List<Book> borrowedBooks = member.getBorrowedBooks();
+        System.out.println("Borrowed Books by " + member.getName() + ":");
+        for (Book book : borrowedBooks) {
             System.out.println(book);
         }
     }
 
-=======
->>>>>>> 53538ae (Added code which returns list of available Book objects.)
+
+    public void displayAvailableBooks() {
+        List<Book> availableBooks = getAvailableBooks();
+        System.out.println("Available Books:");
+        for (Book book : availableBooks) {
+            System.out.println(book);
+        }
+    }
 }

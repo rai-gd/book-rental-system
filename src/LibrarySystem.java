@@ -1,5 +1,7 @@
 // contains the main method
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LibrarySystem {
@@ -95,11 +97,15 @@ public class LibrarySystem {
 
                     break;
                 case 2: // View members
-                    while (true) {
+                    //while (true) {
                         // Print members
+                        List<Member> members = library.getMembers();
                         System.out.println(divider);
                         System.out.printf("%5s%5s%n", " ", "Name");// pwede wala format
-                        System.out.println("1 Name");// replace
+                        
+                        for (Member member : members) {
+                            System.out.println(member.getMemberId() + " " + member.getName());
+                        } // Gets Members from library member list
 
                         // Print menu
                         System.out.println(divider);
@@ -112,9 +118,26 @@ public class LibrarySystem {
                         int memChoice = readChoice(sc);
                         switch (memChoice) {
                             case 1: // Select member
-                                System.out.println("Member details");
-                                System.out.println("Rented books");
-
+                                System.out.println("Enter member ID: ");
+                                int memChoice2 = readChoice(sc);
+                                boolean isValid = false;
+                                Member selectedMember = null;
+                                for (Member member : members) {
+                                    if (member.getMemberId() == memChoice2) {
+                                        isValid = true;
+                                        selectedMember = member;
+                                        break;
+                                    } //compares input member ID to the member list
+                                }
+                                if (isValid) {
+                                    System.out.println("Member details");
+                                    System.out.println("Member ID: " + selectedMember.getMemberId() + " || Member Name: " + selectedMember.getName());
+                                    System.out.println("Rented books\n");
+                                }
+                                else {
+                                    System.out.println("Invalid input. No such member exists.");
+                                }
+     
                                 break;
                             case 2: // Search member
                                 System.out.println("Search");
@@ -135,7 +158,7 @@ public class LibrarySystem {
                         }
 
                         if (memChoice == 0) break;
-                    }
+                 //   }
 
                     break;
 
