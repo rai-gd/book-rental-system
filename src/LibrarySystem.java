@@ -1,6 +1,7 @@
 // contains the main method
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.io.BufferedReader;
@@ -31,6 +32,8 @@ public class LibrarySystem {
 
         return books;
     }
+
+
     public static void main(String[] args) {
         ArrayList<Book> bookList = BookList();
         String divider = "--------------------------";
@@ -108,8 +111,7 @@ public class LibrarySystem {
 
                                 break;
                             case 2: // Search book
-                                System.out.println("Search: ");
-
+                                searchBooks(sc);
                                 break;
                             case 3: // Add book
                                 System.out.println("Enter...");
@@ -238,5 +240,57 @@ public class LibrarySystem {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void searchBooks(Scanner sc) {
+        ArrayList<Book> bookList = BookList();
+        boolean searching = true;
+
+        do {
+            System.out.println("Search by:\n" +
+                    "[1] Book Title\n" +
+                    "[2] Author\n" +
+                    "[3] Back");
+
+            int searchChoice = readChoice(sc);
+
+            switch (searchChoice) {
+                case 1:
+                    System.out.print("Enter book title to search: ");
+                    String searchTitle = sc.nextLine();
+                    displaySearchResults(bookList, searchTitle, "Title");
+                    break;
+
+                case 2:
+                    System.out.print("Enter author to search: ");
+                    String searchAuthor = sc.nextLine();
+                    displaySearchResults(bookList, searchAuthor, "Author");
+                    break;
+
+                case 0:
+                    searching = false;
+                    break;
+            }
+        } while (searching);
+    }
+    public static void displaySearchResults(ArrayList<Book> bookList, String searchTerm, String searchType) {
+        System.out.println("Search Results:");
+        System.out.println("==============================================================================");
+        System.out.printf("%-4s%-23s%-40s%-20s%n", "ID", "Status", "Title", "Author");
+        System.out.println("==============================================================================");
+
+        for (Book book : bookList) {
+            String searchField = searchType.equalsIgnoreCase("Title") ? book.getTitle() : book.getAuthor();
+            if (searchField.equalsIgnoreCase(searchTerm)) {
+                String availability = book.getIsAvailable() ? "Available" : "Not Available";
+                String idFormatted = String.format("%-4d", book.getId());
+                String availabilityFormatted = String.format("%-23s", availability);
+                String titleFormatted = String.format("%-40s", book.getTitle());
+                String authorFormatted = String.format("%-20s", book.getAuthor());
+
+                System.out.println(idFormatted + availabilityFormatted + titleFormatted + authorFormatted);
+            }
+        }
+        System.out.println("==============================================================================");
     }
 }
