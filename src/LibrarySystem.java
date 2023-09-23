@@ -48,83 +48,93 @@ public class LibrarySystem {
 
             switch (choice) {
                 case 1: // View books
+                    while (true) {
+                        // Print book list
+                        System.out.println(divider);
+                        System.out.printf("%5s%5s%15s%n", " ", "Title", "Author");// pwede wala format
+                        System.out.println("1 title author");// replace
 
-                    // Print book list
-                    System.out.println(divider);
-                    System.out.printf("%5s%5s%15s%n", " ", "Title", "Author");// pwede wala format
-                    System.out.println("1 title author");// replace
+                        // Print menu
+                        System.out.println(divider);
+                        System.out.print("[1] Select book\n" +
+                                "[2] Search Book\n" +
+                                "[3] Add book\n" +
+                                "[0] Back\n" +
+                                "Enter choice: ");
 
-                    // Print menu
-                    System.out.println(divider);
-                    System.out.print("[1] Select book\n" +
-                            "[2] Search Book\n" +
-                            "[3] Add book\n" +
-                            "[0] Back\n" +
-                            "Enter choice: ");
+                        int bookChoice = readChoice(sc);
 
-                    int bookChoice = readChoice(sc);
+                        switch (bookChoice) {
+                            case 1: // Select book
+                                System.out.println("Enter book number: ");
 
-                    switch (bookChoice) {
-                        case 1: // Select book
-                            System.out.println("Enter book number: ");
+                                break;
+                            case 2: // Search book
+                                System.out.println("Search: ");
 
+                                break;
+                            case 3: // Add book
+                                System.out.println("Enter...");
+
+                                break;
+
+                            case 0:
+                                break;
+
+                            default:
+                                System.out.print("Invalid choice");
+                                delayOutput(300);
+                                System.out.println();
+                                break;
+
+                        }
+
+                        if (bookChoice == 0)
                             break;
-                        case 2: // Search book
-                            System.out.println("Search: ");
-
-                            break;
-                        case 3: // Add book
-                            System.out.println("Enter...");
-
-                            break;
-
-                        case 0:
-                            break;
-
-                        default:
-                            System.out.print("Invalid choice");
-                            delayOutput(300);
-                            break;
-
                     }
 
                     break;
                 case 2: // View members
-                    // Print members
-                    System.out.println(divider);
-                    System.out.printf("%5s%5s%n", " ", "Name");// pwede wala format
-                    System.out.println("1 Name");// replace
+                    while (true) {
+                        // Print members
+                        System.out.println(divider);
+                        System.out.printf("%5s%5s%n", " ", "Name");// pwede wala format
+                        System.out.println("1 Name");// replace
 
-                    // Print menu
-                    System.out.println(divider);
-                    System.out.print("[1] Select member\n" +
-                            "[2] Search member\n" +
-                            "[3] Add member\n" +
-                            "[0] Back\n" +
-                            "Enter choice: ");
+                        // Print menu
+                        System.out.println(divider);
+                        System.out.print("[1] Select member\n" +
+                                "[2] Search member\n" +
+                                "[3] Add member\n" +
+                                "[0] Back\n" +
+                                "Enter choice: ");
 
-                    int memChoice = readChoice(sc);
-                    switch (memChoice) {
-                        case 1: // Select member
-                            System.out.println("Member details");
-                            System.out.println("Rented books");
+                        int memChoice = readChoice(sc);
+                        switch (memChoice) {
+                            case 1: // Select member
+                                System.out.println("Member details");
+                                System.out.println("Rented books");
 
-                            break;
-                        case 2: // Search member
-                            System.out.println("Search");
+                                break;
+                            case 2: // Search member
+                                System.out.println("Search");
 
-                            break;
-                        case 3: // Add member
-                            System.out.println("");
+                                break;
+                            case 3: // Add member
+                                System.out.println("");
 
-                            break;
-                        case 0:
-                            break;
+                                break;
+                            case 0:
+                                break;
 
-                        default:
-                            System.out.print("Invalid choice");
-                            delayOutput(300);
-                            break;
+                            default:
+                                System.out.print("Invalid choice");
+                                delayOutput(300);
+                                System.out.println();
+                                break;
+                        }
+
+                        if (memChoice == 0) break;
                     }
 
                     break;
