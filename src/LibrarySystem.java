@@ -1,5 +1,3 @@
-// contains the main method
-
 import java.util.Scanner;
 
 public class LibrarySystem {
@@ -9,32 +7,15 @@ public class LibrarySystem {
         // Create a library
         Library library = new Library();
 
-        // // Add books to the library
-        // Book book1 = new Book(1, "Introduction to Java", "John Doe");
-        // Book book2 = new Book(2, "Programming Basics", "Jane Smith");
-        // library.addBook(book1);
-        // library.addBook(book2);
-
-        // // Add members to the library
-        // Member member1 = new Member(101, "Alice");
-        // Member member2 = new Member(102, "Bob");
-        // library.addMember(member1);
-        // library.addMember(member2);
-
-        // // Display available books
-        // library.displayAvailableBooks();
-
-        // // Alice borrows a book
-        // member1.borrowBook(book1);
-
-        // // Display available books after borrowing
-        // library.displayAvailableBooks();
-
-        // // Bob borrows a book
-        // member2.borrowBook(book2);
-
-        // // Display available books after Bob's borrowing
-        // library.displayAvailableBooks();
+        // Initialize hard-coded members
+        Member member1 = new Member(12, "Matsuo");
+        Member member2 = new Member(23, "Hikari");
+        Member member3 = new Member(34, "MinMin");
+        Member member4 = new Member(41, "Hayate");
+        library.addMember(member1);
+        library.addMember(member2);
+        library.addMember(member3);
+        library.addMember(member4);
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome..");
@@ -112,9 +93,22 @@ public class LibrarySystem {
                         int memChoice = readChoice(sc);
                         switch (memChoice) {
                             case 1: // Select member
-                                System.out.println("Member details");
-                                System.out.println("Rented books");
+                                // Print list of members
+                                System.out.println(divider);
+                                System.out.println("Members:");
+                                library.displayMembers();
 
+                                // Select a member
+                                System.out.print("Enter member ID: ");
+                                int memberId = readChoice(sc);
+                                Member selectedMember = library.getMemberById(memberId);
+
+                                if (selectedMember != null) {
+                                    // View borrowed books of the selected member
+                                    library.viewBorrowedBooks(selectedMember);
+                                } else {
+                                    System.out.println("Member not found.");
+                                }
                                 break;
                             case 2: // Search member
                                 System.out.println("Search");
