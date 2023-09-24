@@ -53,11 +53,11 @@ class Book {
 	}
 
 	/**
-    * Overrides the default `toString` method to provide a custom string representation of the `Book` object.
-	*
-    * @return A string containing book details in the format: "Book [id=<id>, title=<title>, author=<author>]".
-    */
-    @Override
+	 * Overrides the default `toString` method to provide a custom string representation of the `Book` object.
+	 *
+	 * @return A string containing book details in the format: "Book [id=<id>, title=<title>, author=<author>]".
+	 */
+	@Override
 	public String toString() {
 	    return "Book [id=" + id + ", title=" + title + ", author=" + author + "]";
 	}
