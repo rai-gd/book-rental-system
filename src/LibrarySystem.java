@@ -132,10 +132,10 @@ public class LibrarySystem {
                         if (bookChoice == 0)
                             break;
                     }
-
+            
                     break;
                 case 2: // View members
-                    //while (true) {
+                    while (true) {
                     // Print members
                     List<Member> members = library.getMembers();
                     System.out.println(divider);
@@ -160,6 +160,7 @@ public class LibrarySystem {
                             int memChoice2 = readChoice(sc);
                             boolean isValid = false;
                             Member selectedMember = null;
+                            
                             for (Member member : members) {
                                 if (member.getMemberId() == memChoice2) {
                                     isValid = true;
@@ -170,11 +171,16 @@ public class LibrarySystem {
                             if (isValid) {
                                 System.out.println("Member details");
                                 System.out.println("Member ID: " + selectedMember.getMemberId() + " || Member Name: " + selectedMember.getName());
-                                System.out.println("Rented books\n");
-                            }
-                            else {
-                                System.out.println("Invalid input. No such member exists.");
-                            }
+                                System.out.println("Rented books");
+                                if (selectedMember.getBorrowedBooks().size() == 0) {
+                                    // Print a message to show that there are no borrowed books
+                                    System.out.println(selectedMember.getName() + " has not borrowed any books from the library.");
+                                  }
+                                else {
+                                    System.out.println(selectedMember.getBorrowedBooks());
+                                }
+                                }
+
 
                             break;
                         case 2: // Search member
@@ -196,7 +202,7 @@ public class LibrarySystem {
                     }
 
                     if (memChoice == 0) break;
-                    //   }
+                       }
 
                     break;
 
