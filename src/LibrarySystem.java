@@ -197,11 +197,19 @@ public class LibrarySystem {
 
                                 break;
                             case 2: // Search book
-                                System.out.println("Search: ");
+                                searchBooks(sc);
 
                                 break;
                             case 3: // Add book
-                                System.out.println("Enter...");
+                                System.out.print("Enter title: ");
+                                String title = sc.nextLine();
+                                System.out.print("Enter author: ");
+                                String author = sc.nextLine();
+                                Book newBook = new Book(bookList.size() + 1, true, title, author);
+                                bookList.add(newBook);
+                                System.out.println("Successfully added new Book: " + newBook);
+
+        
 
                                 break;
 
