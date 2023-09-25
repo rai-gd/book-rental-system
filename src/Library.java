@@ -9,7 +9,9 @@ public class Library {
         this.books = new ArrayList<>();
         this.members = new ArrayList<>();
     }
-
+    public List<Member> getMembers() {
+        return members;
+    }
     public void addMember(Member member) {
         members.add(member);
     }
