@@ -38,35 +38,6 @@ public class LibrarySystem {
         List<Member> members = library.getMembers();
         String divider = "--------------------------";
 
-        // Create a library
-
-        // // Add books to the library
-        // Book book1 = new Book(1, "Introduction to Java", "John Doe");
-        // Book book2 = new Book(2, "Programming Basics", "Jane Smith");
-        // library.addBook(book1);
-        // library.addBook(book2);
-
-        // // Add members to the library
-        // Member member1 = new Member(101, "Alice");
-        // Member member2 = new Member(102, "Bob");
-        // library.addMember(member1);
-        // library.addMember(member2);
-
-        // // Display available books
-        // library.displayAvailableBooks();
-
-        // // Alice borrows a book
-        // member1.borrowBook(book1);
-
-        // // Display available books after borrowing
-        // library.displayAvailableBooks();
-
-        // // Bob borrows a book
-        // member2.borrowBook(book2);
-
-        // // Display available books after Bob's borrowing
-        // library.displayAvailableBooks();
-
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome..");
         while (true) {
@@ -81,21 +52,6 @@ public class LibrarySystem {
                 case 1: // View books
                     while (true) {
                         printBookList(bookList);
-                        // System.out.println("====================Books====================");
-                        // System.out.printf("%-4s%-23s%-40s%-20s%n", "ID", "Status", "Title",
-                        // "Author");
-                        // for (Book book : bookList) {
-                        // String availability = book.getIsAvailable() ? "Available" : "Not Available";
-
-                        // String idFormatted = String.format("%-4d", book.getId());
-                        // String availabilityFormatted = String.format("%-23s", availability);
-                        // String titleFormatted = String.format("%-40s", book.getTitle());
-                        // String authorFormatted = String.format("%-20s", book.getAuthor());
-
-                        // System.out.println(idFormatted + availabilityFormatted + titleFormatted +
-                        // authorFormatted);
-                        // }
-                        // System.out.println("=============================================");
 
                         // Print menu
                         System.out.println(divider);
@@ -233,14 +189,6 @@ public class LibrarySystem {
                     while (true) {
                         System.out.println(divider);
                         printMemberList(members);
-                        // // Print members
-                        // List<Member> members = library.getMembers();
-                        // System.out.println(divider);
-                        // System.out.printf("%5s%5s%n", " ", "Name");// pwede wala format
-
-                        // for (Member member : members) {
-                        // System.out.println(member.getMemberId() + " " + member.getName());
-                        // } // Gets Members from library member list
 
                         // Print menu
                         System.out.println(divider);
