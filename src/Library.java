@@ -48,4 +48,26 @@ public class Library {
     public void returnBook(Member member, Book book) {
         member.returnBook(book);
     }
+
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public Book getBookById(int bookId) {
+        for (Book book : books) {
+            if (book.getId() == bookId) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public Member getMemberById(int memberId) {
+        for (Member member : members) {
+            if (member.getMemberId() == memberId) {
+                return member;
+            }
+        }
+        return null;
+    }
 }

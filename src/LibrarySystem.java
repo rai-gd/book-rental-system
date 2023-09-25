@@ -191,7 +191,7 @@
 //     }
 // }
 
-
+import java.util.List;
 import java.util.Scanner;
 
 public class LibrarySystem {
@@ -278,6 +278,26 @@ public class LibrarySystem {
                     library.returnBook(returnMember, bookToReturn);
                     System.out.println("Book returned successfully.");
                     break;
+
+                case 5: // Search Member (Added option)
+                    System.out.print("Enter member ID to search: ");
+                    int searchMemberId = readChoice(sc);
+                    Member searchMember = library.getMemberById(searchMemberId);
+                    if (searchMember == null) {
+                        System.out.println("Member not found.");
+                    } else {
+                        System.out.println("Borrowed Books by " + searchMember.getName() + ":");
+                        List<Book> borrowedBooks = searchMember.getBorrowedBooks();
+                        if (borrowedBooks.isEmpty()) {
+                            System.out.println("No books borrowed.");
+                        } else {
+                            for (Book book : borrowedBooks) {
+                                System.out.println(book);
+                            }
+                        }
+                    }
+                    break;
+
                 case 0:
                     sc.close();
                     System.out.println("Thank you for using the Library Management System.");
