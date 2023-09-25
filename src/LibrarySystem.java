@@ -218,6 +218,7 @@ public class LibrarySystem {
                     "[2] View Members\n" +
                     "[3] Borrow Book\n" +
                     "[4] Return Book\n" +
+                    "[5] Search Member\n"+
                     "[0] Exit\n" +
                     "Enter choice: ");
 
@@ -258,6 +259,7 @@ public class LibrarySystem {
                     library.borrowBook(borrower, bookToBorrow);
                     System.out.println("Book borrowed successfully.");
                     break;
+                    
                 case 4: // Return Book
                     System.out.print("Enter member ID: ");
                     int returnMemberId = readChoice(sc);
@@ -279,7 +281,7 @@ public class LibrarySystem {
                     System.out.println("Book returned successfully.");
                     break;
 
-                case 5: // Search Member (Added option)
+                case 5: // Search Member
                     System.out.print("Enter member ID to search: ");
                     int searchMemberId = readChoice(sc);
                     Member searchMember = library.getMemberById(searchMemberId);
@@ -293,6 +295,21 @@ public class LibrarySystem {
                         } else {
                             for (Book book : borrowedBooks) {
                                 System.out.println(book);
+                            }
+                            System.out.print("Do you want to return a book?\n"+
+                                "[1] View Books\n" +
+                                "[2] View Members\n");
+                            int returnChoice = readChoice(sc);
+                            if (returnChoice == 1) {
+                                System.out.print("Enter the book ID to return: ");
+                                int returnBookIdInput = readChoice(sc);
+                                Book bookToReturnResult = library.getBookById(returnBookIdInput);
+                                if (bookToReturnResult == null) {
+                                    System.out.println("Book not found.");
+                                } else {
+                                    library.returnBook(searchMember, bookToReturnResult);
+                                    System.out.println("Book returned successfully.");
+                                }
                             }
                         }
                     }
