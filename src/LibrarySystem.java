@@ -13,7 +13,7 @@ public class LibrarySystem {
     public static ArrayList<Book> BookList(){
         ArrayList<Book> books = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("Resource/Books.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("Resources\\Books.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] values = line.split(",");
@@ -188,7 +188,15 @@ public class LibrarySystem {
 
                             break;
                         case 3: // Add member
-                            System.out.println("");
+                                System.out.print("Enter new member ID: ");
+                                int newID = sc.nextInt();
+                                sc.nextLine();
+                                System.out.print("Enter Name: ");
+                                String newName = sc.nextLine();
+                                Member newMem = new Member(newID,newName);
+                                members.add(newMem);
+                                System.out.println("Successfully added new Book: " + newMem);
+
 
                             break;
                         case 0:
